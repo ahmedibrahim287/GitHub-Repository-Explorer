@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { fetchRepositories } from "../api";
-import { useRepoStore } from "../store";
+import { fetchRepositories } from "../api/githubApi";
+import { useRepoStore } from "../store/repoStore";
 
 const Search: React.FC = () => {
   const [keyword, setKeyword] = useState("");
@@ -13,14 +13,19 @@ const Search: React.FC = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search GitHub Repositories..."
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+    <div className="container mt-4">
+      <div className="input-group">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search GitHub Repositories..."
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <button className="btn btn-primary" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
     </div>
   );
 };
