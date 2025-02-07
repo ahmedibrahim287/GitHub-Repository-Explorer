@@ -20,6 +20,8 @@ interface RepoState {
   repositories: Repo[];
   starredRepos: Record<number, boolean>;
   loadingRepos: boolean;
+  error: string | null;
+  setError: (error: string | null) => void;
   loadingStar: Record<number, boolean>;
   setRepositories: (repos: Repo[]) => void;
   setLoadingRepos: (loading: boolean) => void;
@@ -34,11 +36,13 @@ export const useRepoStore = create<RepoState>()(
     starredRepos: JSON.parse(localStorage.getItem("starredRepos") || "{}"),
     loadingRepos: false,
     loadingStar: {},
+    error: null,
 
     setRepositories: (repos) =>
       set({ repositories: repos }, false, "SET_REPOSITORIES"),
     setLoadingRepos: (loading) =>
       set({ loadingRepos: loading }, false, "SET_LOADING_REPOS"),
+    setError: (error) => set({ error }),
 
     fetchRepositories: async (keyword) => {
       set({ loadingRepos: true }, false, "FETCH_REPOSITORIES_START");

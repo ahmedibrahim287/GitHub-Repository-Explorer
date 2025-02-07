@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./StarButton.module.css";
+import PrimaryButton from "./PrimaryButton/PrimaryButton";
 import { useRepoStore } from "../../store/repoStore";
 
 interface StarButtonProps {
@@ -7,6 +7,7 @@ interface StarButtonProps {
   owner: string;
   repo: string;
   starred: boolean;
+  className?: string;
 }
 
 const StarButton: React.FC<StarButtonProps> = ({
@@ -14,25 +15,24 @@ const StarButton: React.FC<StarButtonProps> = ({
   owner,
   repo,
   starred,
+  className,
 }) => {
   const { toggleStar, loadingStar } = useRepoStore();
 
   return (
-    <button
-      className={`btn ${starred ? "btn-danger" : "btn-success"} ${
-        styles.starButton
-      }`}
+    <PrimaryButton
       onClick={() => toggleStar(id, owner, repo)}
-      disabled={loadingStar[id]}
+      variant={starred ? "secondary" : "primary"}
+      className={className}
     >
       {loadingStar[id] ? (
         <span className="spinner-border spinner-border-sm"></span>
       ) : starred ? (
-        "Unstar"
+        "⭐ Unstar"
       ) : (
-        "Star"
+        "🌟 Star"
       )}
-    </button>
+    </PrimaryButton>
   );
 };
 

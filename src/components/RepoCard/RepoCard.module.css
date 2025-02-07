@@ -1,8 +1,105 @@
-.repoCard {
-    transition: transform 0.2s ease-in-out;
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px var(--card-shadow);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+    height: 100%;
+    padding: 16px;
   }
   
-  .repoCard:hover {
-    transform: scale(1.02);
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    flex-grow: 1;
+  }
+  
+  .owner {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.9;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.85;
+    flex-grow: 1;
+    min-height: 40px; 
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  
+  .badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .cardFooter {
+    margin-top: auto; 
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  
+  .starButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .starButton:hover {
+    transform: scale(1.03);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
   }
   

@@ -1,25 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dubai:wght@300;400;700&display=swap');
+
+/*  Global Font */
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Cairo", "Dubai", sans-serif !important;
   background-color: #f8f9fa;
-  margin: 0;
-  padding: 0;
+  color: #333;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  -webkit-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  -ms-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.card {
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border-radius: 10px;
-  overflow: hidden;
+/*  Improve Titles */
+h1, h2, h3, h4, h5, h6, p, span, input, button, a {
+  font-weight: 700;
+  font-family: "Cairo", "Dubai", sans-serif !important;
 }
 
-.card:hover {
-  transform: scale(1.02);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+/* Title */
+h1 {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #6c63ff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+/*  Improve Button & Inputs */
+button, input {
+  font-family: "Cairo", "Dubai", sans-serif !important;
 }
 
-.btn {
-  transition: all 0.2s ease-in-out;
-}
 
-.btn:hover {
-  transform: scale(1.05);
+/* Center Content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }

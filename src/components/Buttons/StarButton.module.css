@@ -1,8 +1,24 @@
 .starButton {
-    transition: all 0.2s ease-in-out;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: none;
+  }
+  
+  .star {
+    background: gold;
+    color: black;
+  }
+  
+  .unstar {
+    background: tomato;
+    color: white;
   }
   
   .starButton:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
   

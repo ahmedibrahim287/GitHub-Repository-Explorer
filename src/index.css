@@ -1,0 +1,17 @@
+@import url("./styles/global.css");
+@import url("./styles/bootstrap-overrides.css");
+@import url("./styles/theme.css");
+
+:root {
+  font-family: "Cairo", "Dubai", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+}

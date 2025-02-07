@@ -1,24 +1,37 @@
 import React, { useState } from "react";
-import { useRepoStore } from "../../store/repoStore";
 import styles from "./Search.module.css";
+import { useRepoStore } from "../../store/repoStore";
+import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 
 const Search: React.FC = () => {
   const [keyword, setKeyword] = useState("");
-  const { setRepositories, setLoadingRepos, loadingRepos } = useRepoStore();
+  const { setRepositories, setLoadingRepos, loadingRepos, setError } =
+    useRepoStore();
 
   const handleSearch = async () => {
     if (keyword.trim() === "") {
       setRepositories([]);
+      setError(null);
       return;
     }
 
     setLoadingRepos(true);
-    const response = await fetch(
-      `https://api.github.com/search/repositories?q=${keyword}`
-    );
-    const data = await response.json();
-    setRepositories(data.items || []);
-    setLoadingRepos(false);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        `https://api.github.com/search/repositories?q=${keyword}`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch repositories. Please try again.");
+      }
+      const data = await response.json();
+      setRepositories(data.items || []);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoadingRepos(false);
+    }
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -33,33 +46,28 @@ const Search: React.FC = () => {
 
     if (value.trim() === "") {
       setRepositories([]);
+      setError(null);
     }
   };
 
   return (
     <div className={styles.searchContainer}>
-      <div className="input-group">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search GitHub Repositories..."
-          value={keyword}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyPress}
-          disabled={loadingRepos}
-        />
-        <button
-          className="btn btn-primary"
-          onClick={handleSearch}
-          disabled={loadingRepos}
-        >
-          {loadingRepos ? (
-            <span className="spinner-border spinner-border-sm"></span>
-          ) : (
-            "Search"
-          )}
-        </button>
-      </div>
+      <input
+        type="text"
+        className={styles.searchInput}
+        placeholder="Search GitHub Repositories..."
+        value={keyword}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyPress}
+        disabled={loadingRepos}
+      />
+      <PrimaryButton onClick={handleSearch} disabled={loadingRepos}>
+        {loadingRepos ? (
+          <span className="spinner-border spinner-border-sm"></span>
+        ) : (
+          "Search"
+        )}
+      </PrimaryButton>
     </div>
   );
 };

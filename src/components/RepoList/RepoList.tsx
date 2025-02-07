@@ -1,24 +1,30 @@
 import React from "react";
-import { useRepoStore } from "../../store/repoStore";
-import Loader from "../Loader/Loader";
-import RepoCard from "../RepoCard/RepoCard";
 import styles from "./RepoList.module.css";
+import { useRepoStore } from "../../store/repoStore";
+import RepoCard from "../RepoCard/RepoCard";
+import Loader from "../Loader/Loader";
 
 const RepoList: React.FC = () => {
-  const { repositories, loadingRepos } = useRepoStore(); 
+  const { repositories, loadingRepos, error } = useRepoStore();
+
+  if (loadingRepos) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <p className={styles.errorMessage}>⚠️ {error}</p>;
+  }
 
   return (
-    <div className="container mt-4">
-      {loadingRepos && <Loader />}
-      {repositories.length === 0 && !loadingRepos && (
-        <div className="alert alert-warning text-center" role="alert">
-          No repositories found. Try searching for something else.
-        </div>
-      )}
-      <div className="row">
-        {repositories.map((repo) => (
-          <div key={repo.id} className={`col-md-6 mb-3 ${styles.repoItem}`}>
+    <div className={styles.list}>
+      {repositories.length === 0 ? (
+        <p className={styles.noResults}>No repositories found.</p>
+      ) : (
+        repositories
+          .slice(0, 10)
+          .map((repo) => (
             <RepoCard
+              key={repo.id}
               id={repo.id}
               name={repo.name}
               owner={repo.owner.login}
@@ -26,9 +32,8 @@ const RepoList: React.FC = () => {
               stars={repo.stargazers_count}
               forks={repo.forks_count}
             />
-          </div>
-        ))}
-      </div>
+          ))
+      )}
     </div>
   );
 };

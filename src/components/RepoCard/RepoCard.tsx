@@ -3,7 +3,7 @@ import styles from "./RepoCard.module.css";
 import { useRepoStore } from "../../store/repoStore";
 import StarButton from "../Buttons/StarButton";
 
-interface RepoProps {
+interface RepoCardProps {
   id: number;
   name: string;
   owner: string;
@@ -12,7 +12,7 @@ interface RepoProps {
   forks: number;
 }
 
-const RepoCard: React.FC<RepoProps> = ({
+const RepoCard: React.FC<RepoCardProps> = ({
   id,
   name,
   owner,
@@ -23,21 +23,31 @@ const RepoCard: React.FC<RepoProps> = ({
   const { starredRepos } = useRepoStore();
 
   return (
-    <div className={`card ${styles.repoCard} shadow-sm`}>
-      <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <p className="text-muted">{owner}</p>
-        <p className="small">{description}</p>
-        <div className="d-flex justify-content-between align-items-center">
-          <span className="badge bg-warning">⭐ {stars}</span>
-          <span className="badge bg-secondary">🍴 {forks}</span>
-          <StarButton
-            id={id}
-            owner={owner}
-            repo={name}
-            starred={starredRepos[id]}
-          />
+    <div className={`${styles.card} fade-in`}>
+      <div className={styles.cardContent}>
+        <div className={styles.cardHeader}>
+          <h5 className={styles.title}>{name}</h5>
+          <p className={styles.owner}>👤 {owner}</p>
         </div>
+
+        <p className={styles.description}>
+          {description || "No description available"}
+        </p>
+
+        <div className={styles.stats}>
+          <span className={styles.badge}>⭐ {stars}</span>
+          <span className={styles.badge}>🍴 {forks}</span>
+        </div>
+      </div>
+
+      <div className={styles.cardFooter}>
+        <StarButton
+          id={id}
+          owner={owner}
+          repo={name}
+          starred={!!starredRepos[id]}
+          className={styles.starButton}
+        />
       </div>
     </div>
   );
