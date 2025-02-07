@@ -1,0 +1,14 @@
+.homeContainer {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .pageTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  

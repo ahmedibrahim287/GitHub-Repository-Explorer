@@ -1,0 +1,8 @@
+.starButton {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .starButton:hover {
+    transform: scale(1.05);
+  }
+  

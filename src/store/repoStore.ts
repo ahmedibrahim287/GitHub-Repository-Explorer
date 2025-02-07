@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import {
+  fetchRepositories,
   starRepo,
   unstarRepo,
   fetchStarredRepositories,
@@ -17,56 +18,39 @@ interface Repo {
 interface RepoState {
   repositories: Repo[];
   starredRepos: Record<number, boolean>;
-  loading: boolean;
-  error: string | null;
+  loadingRepos: boolean;
+  loadingStar: Record<number, boolean>;
   setRepositories: (repos: Repo[]) => void;
-  toggleStar: (id: number, owner: string, repo: string) => void;
+  setLoadingRepos: (loading: boolean) => void;
+  fetchRepositories: (keyword: string) => Promise<void>;
+  toggleStar: (id: number, owner: string, repo: string) => Promise<void>;
   loadStarredRepos: () => Promise<void>;
 }
 
 export const useRepoStore = create<RepoState>((set, get) => ({
   repositories: [],
   starredRepos: JSON.parse(localStorage.getItem("starredRepos") || "{}"),
-  loading: false,
-  error: null,
+  loadingRepos: false,
+  loadingStar: {},
 
   setRepositories: (repos) => set({ repositories: repos }),
+  setLoadingRepos: (loading) => set({ loadingRepos: loading }),
 
-  toggleStar: async (id, owner, repo) => {
-    const isStarred = get().starredRepos[id];
-    set({ loading: true, error: null });
+  fetchRepositories: async (keyword) => {
+    set({ loadingRepos: true });
 
     try {
-      if (isStarred) {
-        await unstarRepo(owner, repo);
-      } else {
-        await starRepo(owner, repo);
-      }
-
-      set((state) => {
-        const updatedStarredRepos = {
-          ...state.starredRepos,
-          [id]: !isStarred,
-        };
-        localStorage.setItem(
-          "starredRepos",
-          JSON.stringify(updatedStarredRepos)
-        );
-        return { starredRepos: updatedStarredRepos, loading: false };
-      });
-
-      console.log(`${isStarred ? "Unstarred" : "Starred"}: ${owner}/${repo}`);
-    } catch (error) {
-      set({ error: "Failed to update repository star status", loading: false });
-      console.error(
-        `Error ${isStarred ? "unstarring" : "starring"} repo`,
-        error
-      );
+      const repos = await fetchRepositories(keyword);
+      set({ repositories: repos });
+    } catch {
+      console.error("Failed to fetch repositories"); // ✅ Logs error if fetch fails
+    } finally {
+      set({ loadingRepos: false });
     }
   },
 
   loadStarredRepos: async () => {
-    set({ loading: true, error: null });
+    set({ loadingRepos: true });
 
     try {
       const starredRepos = await fetchStarredRepositories();
@@ -76,12 +60,49 @@ export const useRepoStore = create<RepoState>((set, get) => ({
         starredMap[repo.id] = true;
       });
 
-      set({ starredRepos: starredMap, loading: false });
+      set({ starredRepos: starredMap });
       localStorage.setItem("starredRepos", JSON.stringify(starredMap));
-      console.log("Loaded starred repositories:", starredMap);
-    } catch (error) {
-      set({ error: "Failed to load starred repositories", loading: false });
-      console.error("Failed to load starred repositories", error);
+    } catch {
+      console.error("Failed to load starred repositories"); // ✅ Logs error if fetch fails
+    } finally {
+      set({ loadingRepos: false });
+    }
+  },
+
+  toggleStar: async (id, owner, repo) => {
+    const isStarred = get().starredRepos[id];
+    set((state) => ({
+      loadingStar: { ...state.loadingStar, [id]: true },
+    }));
+
+    try {
+      // Optimistically update UI
+      set((state) => {
+        const updatedStarredRepos = {
+          ...state.starredRepos,
+          [id]: !isStarred,
+        };
+        localStorage.setItem(
+          "starredRepos",
+          JSON.stringify(updatedStarredRepos)
+        );
+        return { starredRepos: updatedStarredRepos };
+      });
+
+      if (isStarred) {
+        await unstarRepo(owner, repo);
+      } else {
+        await starRepo(owner, repo);
+      }
+    } catch {
+      console.error(`Failed to ${isStarred ? "unstar" : "star"} repository`); // ✅ Logs error
+      set((state) => ({
+        starredRepos: { ...state.starredRepos, [id]: isStarred }, // Revert UI if error
+      }));
+    } finally {
+      set((state) => ({
+        loadingStar: { ...state.loadingStar, [id]: false },
+      }));
     }
   },
 }));

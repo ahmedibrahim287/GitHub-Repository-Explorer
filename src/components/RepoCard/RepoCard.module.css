@@ -1,0 +1,8 @@
+.repoCard {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .repoCard:hover {
+    transform: scale(1.02);
+  }
+  
