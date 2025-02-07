@@ -1,50 +1,99 @@
-# React + TypeScript + Vite
+# 🚀 GitHub Repository Explorer
+A simple **React + TypeScript + Zustand** project to search and star GitHub repositories effortlessly.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 📌 Features
+✅ Search GitHub repositories by keyword  
+✅ Star and unstar repositories  
+✅ Zustand state management with **DevTools** support  
+✅ **Bootstrap-based** responsive UI  
+✅ Loading indicators for a smooth user experience  
+✅ Lightweight and fast with **Vite**  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📂 Folder Structure
+```
+📦 github-explorer
+├── 📂 src
+│   ├── 📂 api          # API calls
+│   │   ├── axiosInstance.ts
+│   │   ├── githubApi.ts
+│   ├── 📂 components   # UI components
+│   │   ├── 📂 Buttons
+│   │   ├── 📂 Loader
+│   │   ├── 📂 RepoCard
+│   │   ├── 📂 RepoList
+│   │   ├── 📂 Search
+│   ├── 📂 screens      # App pages
+│   │   ├── Home.tsx
+│   │   ├── Home.module.css
+│   ├── 📂 store        # Zustand state management
+│   │   ├── repoStore.ts
+│   ├── 📂 styles       # Global styles
+│   │   ├── global.css
+│   ├── App.tsx         # Main app component
+│   ├── main.tsx        # React entry point
+│   ├── index.css       # Base styles
+│   ├── vite-env.d.ts   # Vite environment types
+│   ├── .env.example    # Example environment file
+├── package.json        # Dependencies and scripts
+├── README.md           # Project documentation
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 📦 Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 1️⃣ Clone the repository
+```sh
+git clone https://github.com/your-username/github-explorer.git
+cd github-explorer
 ```
+
+### 2️⃣ Install dependencies
+```sh
+npm install
+```
+
+### 3️⃣ Set up environment variables
+Rename `.env.example` to `.env` and add your **GitHub API Token**:
+
+```
+VITE_GITHUB_API_TOKEN=your_personal_access_token
+```
+🔗 You can create a **GitHub Personal Access Token (PAT)** [here](https://github.com/settings/tokens).
+
+### 4️⃣ Run the development server
+```sh
+npm run dev
+```
+
+---
+
+## 🛠 Technologies Used
+- **React + Vite** – Frontend framework
+- **TypeScript** – Type safety
+- **Zustand** – State management
+- **Bootstrap** – UI styling
+- **Zustand DevTools** – Debugging store state
+- **Axios** – API requests
+
+---
+
+## 📜 License
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🤝 Contributing
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+---
+
+## 📧 Contact
+For any inquiries, reach out at [ahmedibrahim287@outlook.sa](mailto:ahmedibrahim287@outlook.sa).
+
+Happy coding! 🎉
+

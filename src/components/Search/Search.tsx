@@ -4,7 +4,7 @@ import styles from "./Search.module.css";
 
 const Search: React.FC = () => {
   const [keyword, setKeyword] = useState("");
-  const { setRepositories, setLoadingRepos, loadingRepos } = useRepoStore(); // ✅ Now setRepositories exists
+  const { setRepositories, setLoadingRepos, loadingRepos } = useRepoStore();
 
   const handleSearch = async () => {
     if (keyword.trim() === "") {

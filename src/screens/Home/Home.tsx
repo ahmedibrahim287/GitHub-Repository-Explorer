@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Search from "../../components/Search/Search";
-import RepoList from "../../components/RepoList/RepoList"; // ✅ Updated import
+import RepoList from "../../components/RepoList/RepoList";
 import { useRepoStore } from "../../store/repoStore";
 import styles from "./Home.module.css";
 

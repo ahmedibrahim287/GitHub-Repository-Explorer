@@ -15,7 +15,7 @@ const StarButton: React.FC<StarButtonProps> = ({
   repo,
   starred,
 }) => {
-  const { toggleStar, loadingStar } = useRepoStore(); // ✅ Use loadingStar instead of loading
+  const { toggleStar, loadingStar } = useRepoStore();
 
   return (
     <button
@@ -23,7 +23,7 @@ const StarButton: React.FC<StarButtonProps> = ({
         styles.starButton
       }`}
       onClick={() => toggleStar(id, owner, repo)}
-      disabled={loadingStar[id]} // ✅ Use loadingStar[id] instead of loading
+      disabled={loadingStar[id]}
     >
       {loadingStar[id] ? (
         <span className="spinner-border spinner-border-sm"></span>

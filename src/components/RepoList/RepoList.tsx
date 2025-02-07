@@ -5,11 +5,11 @@ import RepoCard from "../RepoCard/RepoCard";
 import styles from "./RepoList.module.css";
 
 const RepoList: React.FC = () => {
-  const { repositories, loadingRepos } = useRepoStore(); // ✅ Removed `error`
+  const { repositories, loadingRepos } = useRepoStore(); 
 
   return (
     <div className="container mt-4">
-      {loadingRepos && <Loader />} {/* ✅ Show Loader while searching */}
+      {loadingRepos && <Loader />}
       {repositories.length === 0 && !loadingRepos && (
         <div className="alert alert-warning text-center" role="alert">
           No repositories found. Try searching for something else.

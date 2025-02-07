@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./RepoCard.module.css";
 import { useRepoStore } from "../../store/repoStore";
-import StarButton from "../Buttons/StarButton"; // ✅ Updated Import
+import StarButton from "../Buttons/StarButton";
 
 interface RepoProps {
   id: number;
