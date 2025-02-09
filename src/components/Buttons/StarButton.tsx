@@ -1,6 +1,9 @@
 import React from "react";
+import { FaRegStar, FaStar } from "react-icons/fa";
 import PrimaryButton from "./PrimaryButton/PrimaryButton";
 import { useRepoStore } from "../../store/repoStore";
+import Loader from "../Loader/Loader";
+import styles from "./StarButton.module.css";
 
 interface StarButtonProps {
   id: number;
@@ -23,14 +26,22 @@ const StarButton: React.FC<StarButtonProps> = ({
     <PrimaryButton
       onClick={() => toggleStar(id, owner, repo)}
       variant={starred ? "secondary" : "primary"}
-      className={className}
+      className={`${styles.starButton} ${className}`}
     >
       {loadingStar[id] ? (
-        <span className="spinner-border spinner-border-sm"></span>
-      ) : starred ? (
-        "⭐ Unstar"
+        <Loader size={16} />
       ) : (
-        "🌟 Star"
+        <>
+          {starred ? (
+            <>
+              <FaStar className={styles.goldStar} /> Unstar
+            </>
+          ) : (
+            <>
+              <FaRegStar className={styles.defaultStar} /> Star
+            </>
+          )}
+        </>
       )}
     </PrimaryButton>
   );

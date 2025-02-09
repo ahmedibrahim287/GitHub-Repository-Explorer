@@ -1,25 +1,27 @@
 /* Customize Bootstrap Buttons */
 .btn-primary {
-  background-color: #6c63ff !important;
-  border-color: #6c63ff !important;
+  background-color: #4A90E2 !important;
+  border-color: #4A90E2 !important;
 }
 
 .btn-primary:hover {
-  background-color: #5548d4 !important;
-  border-color: #5548d4 !important;
+  background-color: #357ABD !important;
+  border-color: #357ABD !important;
+  box-shadow: 0px 4px 12px rgba(74, 144, 226, 0.4);
 }
 
 /* Change Input Styles */
 .form-control {
   border-radius: 10px;
   padding: 12px;
-  border: 2px solid #6c63ff;
+  border: 2px solid #4A90E2;
   transition: all 0.3s ease-in-out;
 }
 
 .form-control:focus {
-  border-color: #5548d4;
-  box-shadow: 0px 4px 8px rgba(108, 99, 255, 0.2);
+  border-color: #357ABD;
+  box-shadow: 0px 4px 10px rgba(74, 144, 226, 0.3);
+  outline: none;
 }
 
 /* Custom Card Styles */

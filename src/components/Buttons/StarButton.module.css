@@ -1,24 +1,14 @@
 .starButton {
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    border: none;
-  }
-  
-  .star {
-    background: gold;
-    color: black;
-  }
-  
-  .unstar {
-    background: tomato;
-    color: white;
-  }
-  
-  .starButton:hover {
-    transform: scale(1.1);
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.goldStar {
+  color: #ffd700; /* Gold color when starred */
+}
+
+.defaultStar {
+  color: var(--text-color); /* Default color from theme */
+}

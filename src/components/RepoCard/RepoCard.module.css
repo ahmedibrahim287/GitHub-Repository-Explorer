@@ -1,105 +1,164 @@
 .card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px var(--card-shadow);
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: space-between;
-    height: 100%;
-    padding: 16px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px var(--card-shadow);
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  padding: 16px;
+  margin-bottom: 20px;
+  min-height: 220px;
+  width: 100%;
+  /*Ensuresallcardsareofthesameheight*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.cardContent {
+  flex-grow: 1;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+
+.description {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.85;
+  min-height: 50px;
+  /* Ensures descriptions take up consistent space */
+  max-height: 60px;
+  /* Prevents excessive height */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  flex-grow: 1;
+}
+
+.owner {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* New owner icon styles */
+.ownerIcon {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.85;
+  flex-grow: 1;
+  min-height: 40px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.badge {
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+/* New Styles for Icons */
+.starButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.goldStar {
+  color: #ffd700;
+  /* Gold color when starred */
+}
+
+.defaultStar {
+  color: var(--text-color);
+  /* Default color from theme */
+}
+
+
+.forkIcon {
+  color: #b0bec5;
+  /* Muted silver/gray */
+  font-size: 1rem;
+}
+
+.cardFooter {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.starButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.starButton:hover {
+  transform: scale(1.03);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .cardHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 5px;
-  }
-  
-  .title {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    flex-grow: 1;
-  }
-  
-  .owner {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    opacity: 0.9;
-  }
-  
-  .description {
-    font-size: 1rem;
-    color: var(--text-color);
-    opacity: 0.85;
-    flex-grow: 1;
-    min-height: 40px; 
-  }
-  
-  .stats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    gap: 10px;
-  }
-  
-  .badge {
-    background: var(--primary-color);
-    color: white;
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .cardFooter {
-    margin-top: auto; 
-    display: flex;
-    justify-content: center;
-    padding-top: 10px;
-  }
-  
-  .starButton {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .starButton:hover {
-    transform: scale(1.03);
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .fade-in {
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}

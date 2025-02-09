@@ -1,22 +1,22 @@
 /* Dark Mode */
 [data-theme="dark"] {
-    --bg-color: #161b22; 
-    --text-color: #e6edf3;
+    --bg-color: #1C1F26; 
+    --text-color: #EAECEF;
     --header-text: #ffffff;
     --card-bg: #0d1117;
-    --card-shadow: rgba(255, 255, 255, 0.1);
-    --primary-color: #bb86fc;
+    --card-shadow: #2D3138;
+    --primary-color: #4A90E2;
     --border-color: #444;
   }
   
   /* Light Mode */
   [data-theme="light"] {
-    --bg-color: #f5f5f5;
-    --text-color: #333;
+    --bg-color: #F7F9FC;
+    --text-color: #1A1A1A;
     --header-text: #333; 
     --card-bg: white;
-    --card-shadow: rgba(0, 0, 0, 0.1);
-    --primary-color: #6c63ff;
+    --card-shadow: #2D3138;
+    --primary-color: #4A90E2;
     --border-color: #ddd;
   }
   

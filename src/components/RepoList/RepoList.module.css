@@ -1,24 +1,30 @@
 .list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .errorMessage {
-    color: red;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  
-  .noResults {
-    text-align: center;
-    font-size: 1.2rem;
-    color: var(--text-color);
-    opacity: 0.7;
-  }
-  
+  padding: 20px;
+}
 
-  
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.errorIcon {
+  font-size: 1.5rem;
+  color: red;
+}
+
+.noResults {
+  text-align: center;
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
