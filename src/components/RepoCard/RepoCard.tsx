@@ -3,15 +3,8 @@ import styles from "./RepoCard.module.css";
 import { useRepoStore } from "../../store/repoStore";
 import StarButton from "../Buttons/StarButton";
 import { FaStar, FaCodeBranch, FaUser, FaRegStar } from "react-icons/fa";
-
-interface RepoCardProps {
-  id: number;
-  name: string;
-  owner: string;
-  description: string;
-  stars: number;
-  forks: number;
-}
+import Loader from "../Loader/Loader";
+import { RepoCardProps } from "../../types";
 
 const RepoCard: React.FC<RepoCardProps> = ({
   id,
@@ -21,7 +14,7 @@ const RepoCard: React.FC<RepoCardProps> = ({
   stars,
   forks,
 }) => {
-  const { starredRepos } = useRepoStore();
+  const { starredRepos, loadingStar } = useRepoStore();
 
   return (
     <div className={`${styles.card} fade-in`}>
@@ -41,7 +34,9 @@ const RepoCard: React.FC<RepoCardProps> = ({
 
         <div className={styles.stats}>
           <span className={styles.badge}>
-            {starredRepos[id] ? (
+            {loadingStar[id] ? (
+              <Loader size={16} />
+            ) : starredRepos[id] ? (
               <>
                 <FaStar className={styles.goldStar} />
               </>

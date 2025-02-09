@@ -8,7 +8,6 @@
   margin-bottom: 20px;
   min-height: 220px;
   width: 100%;
-  /*Ensuresallcardsareofthesameheight*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -41,9 +40,7 @@
   color: var(--text-color);
   opacity: 0.85;
   min-height: 50px;
-  /* Ensures descriptions take up consistent space */
   max-height: 60px;
-  /* Prevents excessive height */
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -109,18 +106,15 @@
 
 .goldStar {
   color: #ffd700;
-  /* Gold color when starred */
 }
 
 .defaultStar {
   color: var(--text-color);
-  /* Default color from theme */
 }
 
 
 .forkIcon {
   color: #b0bec5;
-  /* Muted silver/gray */
   font-size: 1rem;
 }
 

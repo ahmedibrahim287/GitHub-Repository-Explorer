@@ -4,14 +4,7 @@ import PrimaryButton from "./PrimaryButton/PrimaryButton";
 import { useRepoStore } from "../../store/repoStore";
 import Loader from "../Loader/Loader";
 import styles from "./StarButton.module.css";
-
-interface StarButtonProps {
-  id: number;
-  owner: string;
-  repo: string;
-  starred: boolean;
-  className?: string;
-}
+import { StarButtonProps } from "../../types";
 
 const StarButton: React.FC<StarButtonProps> = ({
   id,

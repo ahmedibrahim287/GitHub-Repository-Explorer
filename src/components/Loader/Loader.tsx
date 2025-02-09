@@ -1,9 +1,6 @@
 import React from "react";
 import styles from "./Loader.module.css";
-
-interface LoaderProps {
-  size?: number;
-}
+import { LoaderProps } from "../../types";
 
 const Loader: React.FC<LoaderProps> = ({ size = 40 }) => {
   return (

@@ -16,7 +16,6 @@ const Home: React.FC = () => {
 
   return (
     <div className={styles.homeContainer}>
-      {/* <h1 className={styles.pageTitle}>🚀 GitHub Repository Explorer</h1> */}
       <Search />
       <RepoList />
     </div>

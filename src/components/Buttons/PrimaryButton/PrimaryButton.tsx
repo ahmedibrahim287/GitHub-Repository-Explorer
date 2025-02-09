@@ -1,13 +1,6 @@
 import React from "react";
 import styles from "./PrimaryButton.module.css";
-
-interface ButtonProps {
-  onClick?: () => void | Promise<void>;
-  children: React.ReactNode;
-  variant?: "primary" | "secondary";
-  className?: string;
-  disabled?: boolean;
-}
+import { ButtonProps } from "../../../types";
 
 const PrimaryButton: React.FC<ButtonProps> = ({
   onClick,

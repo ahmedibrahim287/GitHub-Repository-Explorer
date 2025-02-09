@@ -6,29 +6,7 @@ import {
   unstarRepo,
   fetchStarredRepositories,
 } from "../api/githubApi";
-
-interface Repo {
-  id: number;
-  name: string;
-  owner: { login: string };
-  description: string;
-  stargazers_count: number;
-  forks_count: number;
-}
-
-interface RepoState {
-  repositories: Repo[];
-  starredRepos: Record<number, boolean>;
-  loadingRepos: boolean;
-  error: string | null;
-  setError: (error: string | null) => void;
-  loadingStar: Record<number, boolean>;
-  setRepositories: (repos: Repo[]) => void;
-  setLoadingRepos: (loading: boolean) => void;
-  fetchRepositories: (keyword: string) => Promise<void>;
-  toggleStar: (id: number, owner: string, repo: string) => Promise<void>;
-  loadStarredRepos: () => Promise<void>;
-}
+import { Repo, RepoState } from "../types";
 
 export const useRepoStore = create<RepoState>()(
   devtools((set, get) => ({

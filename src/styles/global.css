@@ -27,6 +27,7 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
 }
+
 /*  Improve Button & Inputs */
 button, input {
   font-family: "Cairo", "Dubai", sans-serif !important;
@@ -38,4 +39,11 @@ button, input {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+}
+
+.rocket-icon {
+  color: var(--primary-color);
+  /* Use theme primary color */
+  margin-right: 8px;
+  font-size: 2rem;
 }
