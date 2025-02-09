@@ -20,9 +20,12 @@ const RepoCard: React.FC<RepoCardProps> = ({
     <div className={`${styles.card}  `}>
       <div className={styles.cardContent}>
         <div className={styles.cardHeader}>
-          <h5 className={styles.title}>{name}</h5>
+          <h5 className={styles.title}>
+            {name.length > 10 ? `${name.substring(0, 10)}...` : name}
+          </h5>
           <p className={styles.owner}>
-            <FaUser className={styles.ownerIcon} /> {owner}
+            <FaUser className={styles.ownerIcon} />
+            {owner.length > 7 ? `${name.substring(0, 7)}...` : owner}
           </p>
         </div>
 
