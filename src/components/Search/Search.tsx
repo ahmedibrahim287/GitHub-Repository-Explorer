@@ -63,7 +63,7 @@ const Search: React.FC = () => {
           onKeyDown={handleKeyPress}
           disabled={loadingRepos}
         />
-        <FaSearch className={styles.searchIcon} onClick={handleSearch} />
+        <FaSearch className={styles.searchIcon} />
       </div>
 
       {/* Show search button on mobile */}

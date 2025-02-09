@@ -9,6 +9,10 @@
   min-width: 300px;
 }
 
+.searchInput:focus {
+  box-shadow: 0px 4px 10px rgba(74, 144, 226, 0.3);
+}
+
 /* Search Box (Wrapper for Input & Icon) */
 .searchBox {
   position: relative;
@@ -36,13 +40,13 @@
   transform: translateY(-50%);
   font-size: 1.2rem;
   color: var(--primary-color);
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+
+
 }
 
-.searchIcon:hover {
+/* .searchIcon:hover {
   color: var(--text-color);
-}
+} */
 
 /* Mobile Button */
 .searchButtonMobile {
