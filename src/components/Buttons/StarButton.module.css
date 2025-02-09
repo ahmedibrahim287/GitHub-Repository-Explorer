@@ -3,12 +3,15 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  height: 45px;
 }
 
 .goldStar {
-  color: #ffd700; /* Gold color when starred */
+  color: #ffd700;
+  /* Gold color when starred */
 }
 
 .defaultStar {
-  color: var(--text-color); /* Default color from theme */
+  color: var(--text-color);
+  /* Default color from theme */
 }

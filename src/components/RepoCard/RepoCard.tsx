@@ -17,7 +17,7 @@ const RepoCard: React.FC<RepoCardProps> = ({
   const { starredRepos, loadingStar } = useRepoStore();
 
   return (
-    <div className={`${styles.card} fade-in`}>
+    <div className={`${styles.card}  `}>
       <div className={styles.cardContent}>
         <div className={styles.cardHeader}>
           <h5 className={styles.title}>{name}</h5>

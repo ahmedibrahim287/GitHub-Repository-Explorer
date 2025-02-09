@@ -1,73 +1,89 @@
 /* Dark Mode */
 [data-theme="dark"] {
-    --bg-color: #1C1F26; 
-    --text-color: #EAECEF;
-    --header-text: #ffffff;
-    --card-bg: #0d1117;
-    --card-shadow: #2D3138;
-    --primary-color: #4A90E2;
-    --border-color: #444;
-  }
-  
-  /* Light Mode */
-  [data-theme="light"] {
-    --bg-color: #F7F9FC;
-    --text-color: #1A1A1A;
-    --header-text: #333; 
-    --card-bg: white;
-    --card-shadow: #2D3138;
-    --primary-color: #4A90E2;
-    --border-color: #ddd;
-  }
-  
+  --bg-color: #1C1F26;
+  --text-color: #EAECEF;
+  --header-text: #ffffff;
+  --card-bg: #0d1117;
+  --card-shadow: #2D3138;
+  --primary-color: #4A90E2;
+  --border-color: #444;
+}
 
-  
+/* Light Mode */
+[data-theme="light"] {
+  --bg-color: #F7F9FC;
+  --text-color: #1A1A1A;
+  --header-text: #333;
+  --card-bg: white;
+  --card-shadow: #2D3138;
+  --primary-color: #4A90E2;
+  --border-color: #ddd;
+}
+
+
+
 /* Apply Theme Variables */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  }
-  
-  /* Fix header text color */
-  h1 {
-    color: var(--header-text); 
-  }
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  -webkit-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  -ms-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
 
-  /* Apply Background Color to Entire App */
-  .app-container {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    min-height: 100vh;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  /* Cards */
-  .card {
-    background: var(--card-bg);
-    box-shadow: 0px 4px 10px var(--card-shadow);
-    border: 1px solid var(--border-color);
-  }
-  
+/* Fix header text color */
+h1 {
+  color: var(--header-text);
+}
 
-  .theme-toggle-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
-  }
-  
-  .theme-toggle-btn:hover {
-    transform: scale(1.1) rotate(360deg); 
-  }
+/* Apply Background Color to Entire App */
+.app-container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: background-color 0.3s ease-in-out;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -ms-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  box-shadow: 0px 4px 10px var(--card-shadow);
+  border: 1px solid var(--border-color);
+}
+
+
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1) rotate(360deg);
+  -webkit-transform: scale(1.1) rotate(360deg);
+  -moz-transform: scale(1.1) rotate(360deg);
+  -ms-transform: scale(1.1) rotate(360deg);
+  -o-transform: scale(1.1) rotate(360deg);
+}
