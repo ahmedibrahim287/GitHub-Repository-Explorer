@@ -4,33 +4,86 @@
   align-items: center;
   gap: 12px;
   padding: 20px;
+  width: 65%;
+  max-width: 800px;
+  min-width: 300px;
 }
 
+/* Search Box (Wrapper for Input & Icon) */
+.searchBox {
+  position: relative;
+  width: 100%;
+}
+
+/* Search Input */
 .searchInput {
-  width: 350px;
+  width: 100%;
   padding: 12px 16px;
   font-size: 1rem;
   border-radius: 10px;
   border: 2px solid var(--primary-color);
   transition: all 0.3s ease-in-out;
   height: 45px;
+  padding-right: 40px;
+  /* Make space for icon */
 }
 
-.searchInput:focus {
-  box-shadow: 0px 4px 10px rgba(74, 144, 226, 0.3);
-}
-
-.searchButton {
-  padding: 12px 20px;
-  background: var(--primary-color);
-  border: none;
-  color: white;
-  font-weight: bold;
-  border-radius: 10px;
+/* Search Icon inside input */
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--primary-color);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease-in-out;
 }
 
-.searchButton:hover {
-  transform: scale(1.05);
+.searchIcon:hover {
+  color: var(--text-color);
+}
+
+/* Mobile Button */
+.searchButtonMobile {
+  display: none;
+  /* Hide on large screens */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .searchContainer {
+    width: 75%;
+    /* Reduce width slightly */
+    flex-direction: column;
+    /* Stack input & button */
+    gap: 8px;
+  }
+
+  .searchButtonMobile {
+    display: block;
+    /* Show only on mobile */
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchContainer {
+    width: 80%;
+    /* Reduce width for smaller screens */
+    max-width: 300px;
+    /* Prevent too wide input */
+  }
+
+  .searchInput {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .searchButtonMobile {
+    font-size: 0.9rem;
+    padding: 10px;
+    max-width: 280px;
+    /* Keep it slightly smaller */
+  }
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Search.module.css";
 import { useRepoStore } from "../../store/repoStore";
 import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
+import { FaSearch } from "react-icons/fa";
 
 const Search: React.FC = () => {
   const [keyword, setKeyword] = useState("");
@@ -52,16 +53,25 @@ const Search: React.FC = () => {
 
   return (
     <div className={styles.searchContainer}>
-      <input
-        type="text"
-        className={styles.searchInput}
-        placeholder="Search GitHub Repositories..."
-        value={keyword}
-        onChange={handleInputChange}
-        onKeyDown={handleKeyPress}
+      <div className={styles.searchBox}>
+        <input
+          type="text"
+          className={styles.searchInput}
+          placeholder="Search..."
+          value={keyword}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyPress}
+          disabled={loadingRepos}
+        />
+        <FaSearch className={styles.searchIcon} onClick={handleSearch} />
+      </div>
+
+      {/* Show search button on mobile */}
+      <PrimaryButton
+        onClick={handleSearch}
         disabled={loadingRepos}
-      />
-      <PrimaryButton onClick={handleSearch} disabled={loadingRepos}>
+        className={styles.searchButtonMobile}
+      >
         {loadingRepos ? (
           <span className="spinner-border spinner-border-sm"></span>
         ) : (
