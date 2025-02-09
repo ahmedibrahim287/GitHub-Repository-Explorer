@@ -38,6 +38,7 @@ const RepoList: React.FC = () => {
             >
               <RepoCard
                 key={repo.id}
+                avatar_url={repo.owner.avatar_url}
                 id={repo.id}
                 name={repo.name || "Unknown Repo"}
                 owner={repo.owner?.login || "Unknown Owner"}

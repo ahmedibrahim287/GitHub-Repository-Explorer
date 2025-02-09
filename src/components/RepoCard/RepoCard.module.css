@@ -141,3 +141,12 @@
 .starButton:hover {
   transform: scale(1.03);
 }
+
+.ownerAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 6px;
+  border: 2px solid var(--primary-color);
+}

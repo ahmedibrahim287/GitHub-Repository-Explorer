@@ -1,8 +1,11 @@
 export interface Repo {
   id: number;
   name: string;
-  owner: { login: string };
-  description?: string;
+  owner: {
+    login: string;
+    avatar_url: string;
+  };
+  description: string;
   stargazers_count: number;
   forks_count: number;
 }
@@ -48,4 +51,5 @@ export interface RepoCardProps {
   description: string;
   stars: number;
   forks: number;
+  avatar_url: string; // Add this field
 }
