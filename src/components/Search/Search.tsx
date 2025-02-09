@@ -24,8 +24,17 @@ const Search: React.FC = () => {
         `https://api.github.com/search/repositories?q=${keyword}`
       );
       if (!response.ok) {
-        throw new Error("Failed to fetch repositories. Please try again.");
+        if (response.status === 403) {
+          throw new Error("API rate limit exceeded. Please try again later.");
+        } else if (response.status === 404) {
+          throw new Error(
+            "Repository not found. Please check the repository name."
+          );
+        } else {
+          throw new Error("An unexpected error occurred. Please try again.");
+        }
       }
+
       const data = await response.json();
       setRepositories(data.items || []);
     } catch (err) {
