@@ -15,6 +15,10 @@
   text-align: center;
   margin-top: 20px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .errorIcon {
