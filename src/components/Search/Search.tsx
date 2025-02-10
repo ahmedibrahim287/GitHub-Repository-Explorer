@@ -5,11 +5,12 @@ import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 import { FaSearch } from "react-icons/fa";
 import { MdWarning } from "react-icons/md";
 import Loader from "../Loader/Loader";
+import { fetchRepositories } from "../../api/githubApi";
 
 const Search: React.FC = () => {
   const [keyword, setKeyword] = useState("");
-  const [lastSearched, setLastSearched] = useState(""); // Track last search
-  const [duplicateSearch, setDuplicateSearch] = useState(false); // Track duplicate search
+  const [lastSearched, setLastSearched] = useState("");
+  const [duplicateSearch, setDuplicateSearch] = useState(false);
   const {
     setRepositories,
     setLoadingRepos,
@@ -19,43 +20,37 @@ const Search: React.FC = () => {
   } = useRepoStore();
 
   const handleSearch = async () => {
-    if (keyword.trim() === "") {
+    const trimmedKeyword = keyword.trim();
+
+    if (trimmedKeyword === "") {
       setRepositories([]);
       setError(null);
       return;
     }
 
-    if (keyword.trim() === lastSearched) {
+    if (trimmedKeyword.length < 2) {
+      setError("Please enter at least 2 characters.");
+      return;
+    }
+
+    if (trimmedKeyword === lastSearched) {
       setDuplicateSearch(true);
       return;
     }
 
     setLoadingRepos(true);
     setError(null);
-    setLastSearched(keyword.trim());
+    setLastSearched(trimmedKeyword);
     setDuplicateSearch(false);
 
     try {
-      const response = await fetch(
-        `https://api.github.com/search/repositories?q=${keyword}`
+      const repositories = await fetchRepositories(trimmedKeyword);
+      setRepositories(repositories);
+    } catch (error) {
+      setError(
+        error instanceof Error ? error.message : "Failed to fetch repositories."
       );
-
-      if (!response.ok) {
-        if (response.status === 403) {
-          throw new Error("API rate limit exceeded. Please try again later.");
-        } else if (response.status === 404) {
-          throw new Error(
-            "Repository not found. Please check the repository name."
-          );
-        } else {
-          throw new Error("An unexpected error occurred. Please try again.");
-        }
-      }
-
-      const data = await response.json();
-      setRepositories(data.items || []);
-    } catch (err) {
-      setError((err as Error).message);
+      console.error("Error fetching repositories:", error);
     } finally {
       setLoadingRepos(false);
     }
@@ -104,8 +99,8 @@ const Search: React.FC = () => {
       </div>
       {duplicateSearch && repositories.length > 0 && (
         <div className={styles.duplicateWarning}>
-          <MdWarning className={styles.warningIcon} /> You already searched for
-          "<strong>{lastSearched}</strong>". Try a new keyword!
+          <MdWarning className={styles.warningIcon} />
+          Already searched "<strong>{lastSearched}</strong>" Try another!
         </div>
       )}
     </>
